@@ -1,28 +1,31 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Market;
 
 /**
  * Repository for Market's filesystem and static storage.
  */
-final class FileStorageRepository {
-
+final readonly class FileStorageRepository
+{
     /**
      * Returns image URL or null. *
      * @param $fileName
      * @return string|null
      */
-    public function getUrl($fileName): ?string {
+    public function getUrl($fileName): ?string
+    {
         /*...*/
     }
 
     /**
      * Returns whether file exists or not. *
      * @param string $fileName
-    5
      * @return bool
      */
-    public function fileExists(string $fileName): bool {
+    public function fileExists(string $fileName): bool
+    {
         /*...*/
     }
 
@@ -31,7 +34,8 @@ final class FileStorageRepository {
      * @param string $fileName
      * @return void
      */
-    public function deleteFile(string $fileName): void {
+    public function deleteFile(string $fileName): void
+    {
         /*...*/
     }
 
@@ -40,7 +44,8 @@ final class FileStorageRepository {
      * @param string $fileName
      * @return void
      */
-    public function saveFile(string $fileName): void {
+    public function saveFile(string $fileName): void
+    {
         /*...*/
     }
 }

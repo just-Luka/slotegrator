@@ -1,32 +1,38 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Market;
 
 /**
  * Represents a single product record stored in DB.
  */
-class Product {
-    /* @var FileStorageRepository */
-    private FileStorageRepository $storage;
+final readonly class Product
+{
 
     /**
-     * @var string */
+     * @var string
+     */
     private string $imageFileName;
 
     /**
-     * @param FileStorageRepository $fileStorageRepository */
-    public function __construct(FileStorageRepository $fileStorageRepository) {
-        $this->storage = $fileStorageRepository;
-    }
+     * @param FileStorageRepository $storage
+     */
+    public function __construct(
+        private FileStorageRepository $storage
+    ) {}
 
     /*...*/
     /**
      * Returns product image URL. *
      * @return string|null
      */
-    public function getImageUrl(): ?string {
-        if ($this->storage->fileExists($this->imageFileName) !== true) { return null;
+    public function getImageUrl(): ?string
+    {
+        if ($this->storage->fileExists($this->imageFileName) !== true) {
+            return null;
         }
+
         return $this->storage->getUrl($this->imageFileName);
     }
 
@@ -34,7 +40,8 @@ class Product {
      * Returns whether image was successfully updated or not. *
      * @return bool
      */
-    public function updateImage(): bool {
+    public function updateImage(): bool
+    {
         /*...*/
         try {
             if ($this->storage->fileExists($this->imageFileName) !== true) {
@@ -48,6 +55,5 @@ class Product {
         /*...*/
         return true;
     }
-
     /*...*/
 }
